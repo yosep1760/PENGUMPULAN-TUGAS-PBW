@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Form Pendaftaran Sederhana</title>
+</head>
+<body>
+
+    <div style="border: 1px solid black; padding: 20px; display: inline-block;">
+        
+        <form action="#" method="post" enctype="multipart/form-data">
+            
+            <table cellpadding="5">
+                <tr>
+                    <td><label for="nama">Nama:</label></td>
+                    <td><input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required></td>
+                </tr>
+                
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                
+                <tr>
+                    <td><label>Jenis Kelamin:</label></td>
+                    <td>
+                        <input type="radio" id="laki" name="gender" value="Laki-laki" required> 
+                        <label for="laki">Laki-laki</label>
+                        
+                        <input type="radio" id="perempuan" name="gender" value="Perempuan" required> 
+                        <label for="perempuan">Perempuan</label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><label>Hobi:</label></td>
+                    <td>
+                        <input type="checkbox" id="musik" name="hobi[]" value="Musik"> 
+                        <label for="musik">Musik</label>
+                        
+                        <input type="checkbox" id="olahraga" name="hobi[]" value="Olahraga"> 
+                        <label for="olahraga">Olahraga</label>
+
+                        <input type="checkbox" id="membaca" name="hobi[]" value="Membaca"> 
+                        <label for="membaca">Membaca</label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><label for="kota">Pilih Kota:</label></td>
+                    <td>
+                        <select id="kota" name="kota" required>
+                            <option value="Jakarta">Jakarta</option>
+                            <option value="Bandung">Bandung</option>
+                            <option value="Surabaya">Surabaya</option>
+                        </select>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><label for="foto">Upload Foto:</label></td>
+                    <td><input type="file" id="foto" name="foto" accept="image/*" required></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" style="margin-top: 10px;">Daftar</button>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+
+</body>
+</html>
