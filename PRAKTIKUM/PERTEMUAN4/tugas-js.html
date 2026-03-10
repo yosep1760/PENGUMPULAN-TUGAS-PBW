@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Cek Nilai - JavaScript Sederhana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0b5ed7;
+        }
+        #hasil {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 16px;
+            display: none;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Cek Huruf Mutu</h2>
+        
+        <div class="form-group">
+            <label for="nim">NIM (Nomor Induk Mahasiswa):</label>
+            <input type="text" id="nim" placeholder="Masukkan NIM Anda">
+        </div>
+        
+        <div class="form-group">
+            <label for="nilai">Nilai Mata Kuliah:</label>
+            <input type="number" id="nilai" placeholder="Masukkan Nilai (0 - 100)">
+        </div>
+        
+        <button onclick="cekNilai()">Cek Nilai</button>
+
+        <div id="hasil"></div>
+    </div>
+
+    <script>
+        // b. Fungsi JavaScript untuk menangani event klik tombol
+        function cekNilai() {
+            // Mengambil nilai dari inputan pengguna
+            const nim = document.getElementById("nim").value;
+            const inputNilai = document.getElementById("nilai").value;
+            const areaHasil = document.getElementById("hasil");
+
+            // Memastikan input tidak kosong
+            if (nim === "" || inputNilai === "") {
+                areaHasil.style.display = "block";
+                areaHasil.innerHTML = "<span class='error'>Mohon isi NIM dan Nilai terlebih dahulu!</span>";
+                return;
+            }
+
+            // Mengonversi input nilai menjadi tipe number (integer)
+            const nilai = parseInt(inputNilai);
+            let hurufMutu = "";
+            let pesanError = "";
+
+            // c. Menggunakan kondisi if-else untuk menentukan huruf mutu
+            if (nilai < 0 || nilai > 100) {
+                pesanError = "Nilai tidak valid!";
+            } else if (nilai >= 80 && nilai <= 100) {
+                hurufMutu = "A";
+            } else if (nilai >= 70 && nilai <= 79) {
+                hurufMutu = "B";
+            } else if (nilai >= 60 && nilai <= 69) {
+                hurufMutu = "C";
+            } else if (nilai >= 50 && nilai <= 59) {
+                hurufMutu = "D";
+            } else if (nilai >= 0 && nilai <= 49) {
+                hurufMutu = "E";
+            }
+
+            // Menampilkan bagian hasil
+            areaHasil.style.display = "block";
+
+            // d. Menampilkan huruf mutu atau pesan error
+            if (pesanError !== "") {
+                areaHasil.innerHTML = `<span class='error'>${pesanError}</span>`;
+            } else {
+                areaHasil.innerHTML = `
+                    <strong>Data Mahasiswa:</strong><br>
+                    NIM: ${nim} <br>
+                    Nilai Angka: ${nilai} <br>
+                    Huruf Mutu: <strong style='font-size: 24px; color: #198754;'>${hurufMutu}</strong>
+                `;
+            }
+        }
+    </script>
+
+</body>
+</html>
